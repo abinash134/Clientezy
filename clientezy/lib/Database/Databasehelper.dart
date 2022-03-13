@@ -56,4 +56,12 @@ class DatabaseHelper {
     Database? db = await instance.database;
     return await db!.rawQuery('SELECT * FROM Clients');
   }
+  Future<int> updateClientType(
+      int id,String type
+      ) async {
+    print("updating database");
+    Database? db = await instance.database;
+    return await db!.rawUpdate('UPDATE Clients SET type = ? WHERE id = ?',
+        [type, id]);
+  }
 }
